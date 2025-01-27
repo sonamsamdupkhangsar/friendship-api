@@ -12,6 +12,7 @@ plugins {
     `java-library`
     id("org.springframework.boot") version "3.4.1"  // Replace with your desired version
     id("io.spring.dependency-management") version "1.1.6" // Dependency management plugin
+    id("maven-publish")
 }
 
 dependencyManagement {
@@ -78,3 +79,28 @@ tasks.getByName<BootJar>("bootJar") {
 tasks.getByName<Jar>("jar") {
     enabled = true
 }
+
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+            groupId = "cloud.sonam"
+            artifactId = "friendships-api"
+            version = "1.0.0-SNAPSHOT"
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/sonamsamdupkhangsar/friendships-api")
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("PERSONAL_ACCESS_TOKEN")
+            }
+        }
+    }
+
+}
+
+

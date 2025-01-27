@@ -8,3 +8,7 @@ This api contains the business service for friendship api and the persistence en
 This api is meant to be used either through a monolith web-application or deployed in a microservice.
 
 
+To build: `./gradlew clean build`
+
+To publish to local repository:
+`./gradle publishToMavenLocal`
