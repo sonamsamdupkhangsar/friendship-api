@@ -23,7 +23,8 @@ public class Router {
                 .andRoute(DELETE("/friendships/decline/{friendshipId}"), handler::declineFriendship)
                 .andRoute(POST("/friendships/accept/{friendshipId}"), handler::acceptFriendship)
                 .andRoute(DELETE("/friendships/cancel/{friendshipId}"), handler::cancelFriendship)
-                .andRoute(GET("/friendships"), handler::findFriends);
+                .andRoute(GET("/friendships"), handler::findFriends)
+                .andRoute(GET("/friendships/{userId}"), handler::isFriends);
 
     }
 }

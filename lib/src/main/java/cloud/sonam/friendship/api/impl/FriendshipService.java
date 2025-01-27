@@ -38,12 +38,11 @@ public class FriendshipService {
     }
 
     public Mono<Boolean> isFriends(UUID friendId) {
+        LOG.info("isFriends with {}", friendId);
+
         return getLoggedInUserId().flatMap(userId -> {
-            userWebClient.findById(friendId);
-
-            Mono<Boolean> booleanMono = friendshipRepository.existsByUserIdAndFriendIdAndRequestAcceptedIsTrueAndResponseSentDateNotNull(userId, friendId);
-
-            return booleanMono.flatMap(isFriends -> {
+            return friendshipRepository.existsByUserIdAndFriendIdAndRequestAcceptedIsTrueAndResponseSentDateNotNull(userId, friendId)
+                    .flatMap(isFriends -> {
                 if (isFriends) {
                     return Mono.just(true);
                 }
