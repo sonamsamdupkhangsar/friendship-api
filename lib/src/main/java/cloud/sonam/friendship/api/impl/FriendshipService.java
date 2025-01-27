@@ -40,7 +40,6 @@ public class FriendshipService {
     public Mono<Boolean> isFriends(UUID friendId) {
         return getLoggedInUserId().flatMap(userId -> {
             userWebClient.findById(friendId);
-//            return friendshipService.isFriends(userId, friendId);
 
             Mono<Boolean> booleanMono = friendshipRepository.existsByUserIdAndFriendIdAndRequestAcceptedIsTrueAndResponseSentDateNotNull(userId, friendId);
 
@@ -54,17 +53,6 @@ public class FriendshipService {
             });
 
         });
-
-      /*  Mono<Boolean> booleanMono = friendshipRepository.existsByUserIdAndFriendIdAndRequestAcceptedIsTrueAndResponseSentDateNotNull(userId, friendId);
-
-        return booleanMono.flatMap(isFriends -> {
-            if (isFriends) {
-                return Mono.just(true);
-            }
-            else {
-                return friendshipRepository.existsByUserIdAndFriendIdAndRequestAcceptedIsTrueAndResponseSentDateNotNull(friendId, userId);
-            }
-        });*/
     }
 
 
@@ -168,9 +156,6 @@ public class FriendshipService {
                     User user = objects.getT1();
                     User friend = objects.getT2();
 
-                    LOG.debug("confirming friendship between user '{}' and friend '{}'",
-                            user, friend);
-
                     LOG.debug("delete previous friendship rows where friendship has been declined");
                     return friendshipRepository
                             .deleteByRequestAcceptedIsFalseAndUserIdAndFriendId(user.getId(), friend.getId())
@@ -180,7 +165,6 @@ public class FriendshipService {
             }).flatMap(objects -> {
                     User user = objects.getT1();
                     User friend = objects.getT2();
-
 
                     return friendshipRepository.existsByUserIdAndFriendId(user.getId(), friend.getId())
                             .doOnNext(aBoolean -> {
@@ -219,7 +203,6 @@ public class FriendshipService {
     }
 
     public Mono<Friendship> declineFriendship(UUID userId, UUID friendshipId) {
-        Mono<User> optionalUser = userWebClient.findById(userId);
         Mono<Friendship> friendshipMono = friendshipRepository.findById(friendshipId);
 
         return friendshipMono.switchIfEmpty(Mono.error(new FriendshipException("failed to find friendship with id " + friendshipId)))
@@ -236,13 +219,6 @@ public class FriendshipService {
                                             LOG.debug("update friendship entity");
                                             return friendshipRepository.save(friendship);
                                         });
-    }
-
-    private void checkEntityExists(Object object, String errorMessageIfNull) {
-        if(object == null) {
-            LOG.error(errorMessageIfNull);
-            throw new FriendshipException(errorMessageIfNull);
-        }
     }
 
     public Mono<String> delete(UUID friendshipId) {

@@ -1,7 +1,6 @@
 package cloud.sonam.friendship.api.util;
 
 import cloud.sonam.friendship.api.persist.entity.Friendship;
-import cloud.sonam.friendship.api.persist.repo.FriendshipRepository;
 import me.sonam.webclients.friendship.SeUserFriend;
 import me.sonam.webclients.user.User;
 import me.sonam.webclients.user.UserWebClient;
@@ -19,10 +18,8 @@ public class UserFriendBuilder {
 
     private final UserWebClient userWebClient;
 
-    private final FriendshipRepository friendshipRepository;
+    public UserFriendBuilder(UserWebClient userWebClient) {
 
-    public UserFriendBuilder(FriendshipRepository friendshipRepository, UserWebClient userWebClient) {
-        this.friendshipRepository = friendshipRepository;
         this.userWebClient = userWebClient;
     }
 
@@ -58,30 +55,6 @@ public class UserFriendBuilder {
                 seUserFriend.setFriendshipId(friendship.getId());
             }
         }).thenReturn(seUserFriend);
-
-        //store in userId of the other user, not the logged-in user
-        /*if(friendship.getUserId().equals(loggedInUserId)) {
-            userMono = userWebClient.findById(friendship.getFriendId());
-        }
-        else {
-            userMono = userWebClient.findById(friendship.getUserId());
-        }
-
-        return userMono.flatMap(user -> {
-            LOG.info("user is {}", user);
-                seUserFriend.setFullName(user.getFullName());
-                seUserFriend.setProfilePhoto(user.getProfileThumbailFileKey());
-                return Mono.just(seUserFriend);
-            }).doOnNext(seUserFriend1 -> {
-                if(friendship.getRequestAccepted() && friendship.getResponseSentDate() != null) {
-                    seUserFriend.setFriend(true);
-                    seUserFriend.setFriendshipId(friendship.getId());
-
-                }
-                else if(friendship.getRequestSentDate() != null) {
-                    seUserFriend.setFriendshipId(friendship.getId());
-                }
-        }).thenReturn(seUserFriend);*/
     }
 
     public Mono<SeUserFriend> createSeUserFriendOnRequest(User friend, Friendship friendship) {
