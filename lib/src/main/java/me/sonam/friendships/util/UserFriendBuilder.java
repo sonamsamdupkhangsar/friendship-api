@@ -1,6 +1,6 @@
-package cloud.sonam.friendship.api.util;
+package me.sonam.friendships.util;
 
-import cloud.sonam.friendship.api.persist.entity.Friendship;
+import me.sonam.friendships.persist.entity.Friendship;
 import me.sonam.webclients.friendship.SeUserFriend;
 import me.sonam.webclients.user.User;
 import me.sonam.webclients.user.UserWebClient;

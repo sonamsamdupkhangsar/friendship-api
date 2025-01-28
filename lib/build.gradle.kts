@@ -63,7 +63,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.0.1")
     testImplementation("org.springframework.security:spring-security-test")
-    implementation("me.sonam:webclients:1.0.0-SNAPSHOT")
+    api("me.sonam:webclients:1.0.0-SNAPSHOT")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -92,7 +92,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
-            groupId = "cloud.sonam"
+            groupId = "me.sonam"
             artifactId = "friendships-api"
             version = "1.0.0-SNAPSHOT"
         }

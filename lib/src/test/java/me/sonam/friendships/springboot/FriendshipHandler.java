@@ -1,4 +1,4 @@
-package cloud.sonam.friendship.api.springboot;
+package me.sonam.friendships.springboot;
 
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;

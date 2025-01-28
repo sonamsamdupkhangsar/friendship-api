@@ -1,4 +1,4 @@
-package cloud.sonam.friendship.api;
+package me.sonam.friendships;
 
 public class FriendshipException extends RuntimeException {
     public FriendshipException(String message) {

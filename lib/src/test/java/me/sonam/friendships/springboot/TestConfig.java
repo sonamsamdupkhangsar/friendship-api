@@ -1,4 +1,4 @@
-package cloud.sonam.friendship.api.springboot;
+package me.sonam.friendships.springboot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,7 @@ public class TestConfig {
 
     @Bean
     public WebClient.Builder webClientBuilder() {
-        LOG.info("returning load balanced webclient part");
+        LOG.info("returning non-load balanced webclient part");
         return WebClient.builder();
     }
 }
