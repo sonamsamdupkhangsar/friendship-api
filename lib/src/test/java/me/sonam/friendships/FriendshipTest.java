@@ -1,6 +1,6 @@
-package cloud.sonam.friendship.api;
+package me.sonam.friendships;
 
-import cloud.sonam.friendship.api.persist.entity.Friendship;
+import me.sonam.friendships.persist.entity.Friendship;
 import me.sonam.webclients.user.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

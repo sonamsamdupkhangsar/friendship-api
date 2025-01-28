@@ -1,8 +1,9 @@
-package cloud.sonam.friendship.api;
+package me.sonam.friendships;
 
-import cloud.sonam.friendship.api.persist.entity.Friendship;
-import cloud.sonam.friendship.api.persist.repo.FriendshipRepository;
-import cloud.sonam.friendship.api.springboot.Application;
+import me.sonam.friendships.persist.entity.Friendship;
+import me.sonam.friendships.persist.repo.FriendshipRepository;
+import me.sonam.friendships.springboot.Application;
+import me.sonam.friendships.springboot.TestConfig;
 import me.sonam.webclients.Mapper;
 import me.sonam.webclients.friendship.SeUserFriend;
 import me.sonam.webclients.user.User;
@@ -52,7 +53,7 @@ import static org.springframework.security.test.web.reactive.server.SecurityMock
  */
 @EnableAutoConfiguration
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {Application.class, TestConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(MockitoExtension.class)
 public class FriendshipRouterIntegTest {
     private static final Logger LOG = LoggerFactory.getLogger(FriendshipRouterIntegTest.class);

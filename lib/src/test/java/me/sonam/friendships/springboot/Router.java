@@ -1,4 +1,4 @@
-package cloud.sonam.friendship.api.springboot;
+package me.sonam.friendships.springboot;
 
 
 import org.slf4j.Logger;
