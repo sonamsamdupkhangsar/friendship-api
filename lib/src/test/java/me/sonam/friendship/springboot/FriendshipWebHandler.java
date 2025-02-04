@@ -1,7 +1,7 @@
-package me.sonam.friendships.springboot;
+package me.sonam.friendship.springboot;
 
 
-import me.sonam.friendships.FriendshipService;
+import me.sonam.friendship.FriendshipService;
 import me.sonam.webclients.friendship.SeUserFriend;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

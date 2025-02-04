@@ -1,4 +1,4 @@
-package me.sonam.friendships.persist.entity;
+package me.sonam.friendship.persist.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;

@@ -1,9 +1,9 @@
-package me.sonam.friendships;
+package me.sonam.friendship;
 
-import me.sonam.friendships.persist.entity.Friendship;
-import me.sonam.friendships.persist.repo.FriendshipRepository;
-import me.sonam.friendships.springboot.Application;
-import me.sonam.friendships.springboot.TestConfig;
+import me.sonam.friendship.persist.entity.Friendship;
+import me.sonam.friendship.persist.repo.FriendshipRepository;
+import me.sonam.friendship.springboot.Application;
+import me.sonam.friendship.springboot.TestConfig;
 import me.sonam.webclients.Mapper;
 import me.sonam.webclients.friendship.SeUserFriend;
 import me.sonam.webclients.user.User;

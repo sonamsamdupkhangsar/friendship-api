@@ -1,4 +1,4 @@
-package me.sonam.friendships.model;
+package me.sonam.friendship.model;
 
 import java.io.Serializable;
 import java.util.UUID;

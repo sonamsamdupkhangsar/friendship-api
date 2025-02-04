@@ -1,8 +1,8 @@
-package me.sonam.friendships.persist.repo;
+package me.sonam.friendship.persist.repo;
 
 
 
-import me.sonam.friendships.persist.entity.Friendship;
+import me.sonam.friendship.persist.entity.Friendship;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;

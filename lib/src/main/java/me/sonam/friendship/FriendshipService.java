@@ -1,8 +1,8 @@
-package me.sonam.friendships;
+package me.sonam.friendship;
 
-import me.sonam.friendships.persist.entity.Friendship;
-import me.sonam.friendships.persist.repo.FriendshipRepository;
-import me.sonam.friendships.util.UserFriendBuilder;
+import me.sonam.friendship.persist.entity.Friendship;
+import me.sonam.friendship.persist.repo.FriendshipRepository;
+import me.sonam.friendship.util.UserFriendBuilder;
 import me.sonam.webclients.friendship.FriendNotification;
 import me.sonam.webclients.friendship.FriendshipException;
 import me.sonam.webclients.friendship.SeUserFriend;
